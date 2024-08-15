@@ -1,0 +1,25 @@
+function mist.random(firstNum, secondNum) 
+		local lowNum, highNum
+		if not secondNum then
+			highNum = firstNum
+			lowNum = 1
+		else
+			lowNum = firstNum
+			highNum = secondNum
+		end
+		local total = 1
+		if math.abs(highNum - lowNum + 1) < 50 then
+			total = math.modf(50/math.abs(highNum - lowNum + 1)) 
+		end
+		local choices = {}
+		for i = 1, total do -- iterate required number of times
+			for x = lowNum, highNum do 
+				choices[#choices +1] = x
+			end
+		end
+		local rtnVal = math.random(#choices) 
+		for i = 1, 10 do
+			rtnVal = math.random(#choices) 
+		end
+		return choices[rtnVal]
+	end
